@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98cf2f2b13ff0ff4d97bcb644d6259a7, type: 3}
+  m_Name: "\uC0DD\uC120\uAD6C\uC774(\uCD08\uAE09)"
+  m_EditorClassIdentifier: 
+  Level: 1
+  Food: {fileID: 21300000, guid: 59b062b74b153744995da2edbcfebfe6, type: 3}
+  Name: "\uC0DD\uC120\uAD6C\uC774(\uCD08\uAE09)"
+  Ingredient: "\uACE0\uB4F1\uC5B4, \uC18C\uAE08, \uD280\uAE40\uAC00\uB8E8 "
+  recipe: {fileID: 11400000, guid: 98d068028ffa38741acb26a472dd628b, type: 2}
+  recipeDetail:
+  - ig_code: {fileID: 11400000, guid: ab42d053193fe3e44986f73fe0a1fbfb, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: acac55840d99e9e4db20720d99aaf209, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: 7a2e7fa07532234489fc22e4567badaf, type: 2}
+    amount: 1
+  ig_list:
+  - {fileID: 11400000, guid: ab42d053193fe3e44986f73fe0a1fbfb, type: 2}
+  - {fileID: 11400000, guid: acac55840d99e9e4db20720d99aaf209, type: 2}
+  - {fileID: 11400000, guid: 7a2e7fa07532234489fc22e4567badaf, type: 2}
+  Process1: "\uC0DD\uC120\uC744 \uC190\uC9C8\uD6C4 ,\uBB3C\uAE30 \uC81C\uAC70 "
+  Process2: "\uC0DD\uC120 \uAC89 \uBD80\uBD84\uC5D0 \uCE7C\uC9D1\uC744 \uB0B4\uACE0
+    \uAD75\uC740\uC18C\uAE08\uC744 \uACE8\uACE0\uB8E8 \uBFCC\uB824 \uAC04\uC744 \uD55C\uB2E4. "
+  Process3: "\uC0DD\uC120 \uAC89 \uBD80\uBD84\uC5D0 \uBD80\uCE68\uAC00\uB8E8\uB97C
+    \uACE8\uACE0\uB8E8 \uBB3B\uD78C\uB2E4."
+  Process4: "\uD32C\uC5D0 \uAE30\uB984\uC744 \uC870\uAE08 \uB450\uB978 \uD6C4 \uC900\uBE44\uD55C
+    \uC0DD\uC120\uC744 \uC55E\uB4A4 \uB178\uB987\uB178\uB987 \uAD7D\uB294\uB2E4.  "
+  Process5: 
+  Process6: 
+  Process7: 

@@ -4,41 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/GameStart.unity
-    guid: 99beed7447d783b4b8bb0651edb5a3de
-  - enabled: 1
-    path: Assets/Scenes/Main.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/Restraunt.unity
-    guid: 810723538987231449f53a941096f08b
-  - enabled: 1
-    path: Assets/Scenes/Hunting Ground.unity
-    guid: 5922ca987be113746a66906c042a434c
-  - enabled: 1
-    path: Assets/Scenes/Store.unity
-    guid: 07a9e14f1f9a7ac4290a6885c2db30e8
-<<<<<<< HEAD
-=======
-  - enabled: 1
-    path: Assets/Scenes/Quest1_complete.unity
-    guid: a6a88e59da95bc14faf56f216741a9b9
-  - enabled: 1
-    path: Assets/Scenes/Quest2_complete.unity
-    guid: 68faa6c75ceb93e4fa7a8506f78afdd4
-  - enabled: 1
-    path: Assets/Scenes/Quest3_complete.unity
-    guid: 762a8fae174c08248afc82f1359f7a04
-  - enabled: 1
-    path: Assets/Scenes/Quest4_complete.unity
-    guid: e9f57eec5419e794abf4015175dafb2a
-  - enabled: 1
-    path: Assets/Scenes/Quest5_complete.unity
-    guid: 2c24dfcfc14378743a31168e5c7c6a80
-  - enabled: 1
-    path: Assets/Scenes/Tutorial Story.unity
-    guid: 1f829bc295a097c478cefca1c6f3d553
->>>>>>> BEDev
+  m_Scenes: []
   m_configObjects: {}

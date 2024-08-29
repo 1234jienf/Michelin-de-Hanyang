@@ -7,6 +7,11 @@ public class FadeInEffect : MonoBehaviour
     public Image fadeImage; // 페이드 효과를 줄 UI Image. 인스펙터에서 할당해야 합니다.
     public float fadeDuration; // 페이드인/아웃에 걸리는 시간
 
+    void OnEnable()
+    {
+        Time.timeScale = 1; // 씬 전환 후 Time.timeScale을 1로 설정
+    }
+
     // 페이드인 코루틴
     IEnumerator FadeIn()
     {

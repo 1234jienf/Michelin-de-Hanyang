@@ -31,6 +31,7 @@ public class SceneNavigationController : MonoBehaviour
         else
         {
             warningText.text = "";
+            GameMgr.Instance.inventoryControl.draggable.resetPos();
             SceneManager.LoadScene("Hunting Ground"); // 사냥터 씬으로 이동
         }
     }

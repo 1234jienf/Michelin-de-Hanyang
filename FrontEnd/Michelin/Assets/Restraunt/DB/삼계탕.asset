@@ -16,6 +16,24 @@ MonoBehaviour:
   Food: {fileID: 21300000, guid: 9e1ba2e82a1ac0d46b3d3be9d68a420a, type: 3}
   Name: "\uC0BC\uACC4\uD0D5"
   Ingredient: "\uB2ED, \uC18C\uAE08, \uB9C8\uB298, \uD30C, \uCC39\uC300"
+  recipe: {fileID: 11400000, guid: 9f303c0155136074a9934a099c83a432, type: 2}
+  recipeDetail:
+  - ig_code: {fileID: 11400000, guid: 3a5f19be1474b204b9518cf3fe74165a, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: acac55840d99e9e4db20720d99aaf209, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: a2250f58d0c185542af64069c304369b, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: fa8c71b0148605e438afab2a61ddf3a1, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: 7e539afbce2e3374ab68cd05bb9a9ace, type: 2}
+    amount: 1
+  ig_list:
+  - {fileID: 11400000, guid: 3a5f19be1474b204b9518cf3fe74165a, type: 2}
+  - {fileID: 11400000, guid: acac55840d99e9e4db20720d99aaf209, type: 2}
+  - {fileID: 11400000, guid: a2250f58d0c185542af64069c304369b, type: 2}
+  - {fileID: 11400000, guid: fa8c71b0148605e438afab2a61ddf3a1, type: 2}
+  - {fileID: 11400000, guid: 7e539afbce2e3374ab68cd05bb9a9ace, type: 2}
   Process1: "\uB2ED \uC190\uC9C8\uD558\uAE30"
   Process2: "\uB2ED \uC548\uC5D0 \uCC39\uC300, \uB300\uCD94 \uB123\uAE30 "
   Process3: "\uB2ED \uB123\uACE0 \uB053\uC774\uBA74\uC11C \uB9C8\uB298, \uD30C, \uC18C\uAE08

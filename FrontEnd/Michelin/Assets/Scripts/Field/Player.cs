@@ -1,17 +1,10 @@
-<<<<<<< HEAD:FrontEnd/Michelin/Assets/Scripts/Player.cs
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
-=======
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
->>>>>>> BEDev:FrontEnd/Michelin/Assets/Scripts/Field/Player.cs
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -21,10 +14,10 @@ public class Player : MonoBehaviour
     private Rigidbody2D rigid;
     public Vector3 fireDir;
     private SpriteRenderer render;
-    private Vector3 sight = Vector3.left; // 플레이어의 시선
+    public Vector3 sight = Vector3.left; // 플레이어의 시선
     private bool is_hit; // 피격 상태
     private bool is_death = false; // 사망 상태
-    public int hit_control;
+    public float hit_control;
 
     [SerializeField]
     private Transform startPoint; // 시작 위치
@@ -36,10 +29,6 @@ public class Player : MonoBehaviour
     private float moveSpeed = 3f; // 플레이어의 이동 속도
     private float ridingSpeed; // 탈것에 탑승 시 이동속도
 
-<<<<<<< HEAD:FrontEnd/Michelin/Assets/Scripts/Player.cs
-    [SerializeField]
-    private float hp = 100f; // 체력
-=======
     private readonly int maxLevel = 50; // 만렙
 
     [SerializeField]
@@ -53,7 +42,6 @@ public class Player : MonoBehaviour
 
     private int needExp; // 요구 경험치
     private int atk; // 공격력
->>>>>>> BEDev:FrontEnd/Michelin/Assets/Scripts/Field/Player.cs
 
     [SerializeField]
     private List<FishingManager> fishingManagers;
@@ -63,31 +51,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Vector2 attackHitBoxSize; // 공격 히트 박스 사이즈
 
-    private List<Collider2D> triggerItemList; // 현재 플레이어와 닿아있는 드롭 아이템들 리스트
+    public List<Collider2D> triggerItemList; // 현재 플레이어와 닿아있는 드롭 아이템들 리스트
 
-<<<<<<< HEAD:FrontEnd/Michelin/Assets/Scripts/Player.cs
-    [HideInInspector]
-    public string currentFieldName = "Field 1"; // 플레이어가 위치한 필드 이름
-
-    void Awake()
-    {
-        if (instance != this && instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-            rigid = GetComponent<Rigidbody2D>();
-            triggerItemList = new List<Collider2D>();
-            GameObject[] fishingManagerObjs = GameObject.FindGameObjectsWithTag("Fishing Manager");
-            foreach (GameObject fishingManagerObj in fishingManagerObjs)
-            {
-                fishingManagers.Add(fishingManagerObj.GetComponent<FishingManager>());
-            }
-        }
-        animator = GetComponent<Animator>();
-=======
     [SerializeField]
     private InventoryControl myInventory;
 
@@ -126,15 +91,10 @@ public class Player : MonoBehaviour
         }
         animator = GetComponent<Animator>();
         gameMgr = GameMgr.Instance;
->>>>>>> BEDev:FrontEnd/Michelin/Assets/Scripts/Field/Player.cs
     }
 
     void Start()
     {
-<<<<<<< HEAD:FrontEnd/Michelin/Assets/Scripts/Player.cs
-        // Scene이 이동해도 파괴되지 않도록 설정
-        DontDestroyOnLoad(gameObject);
-=======
         // 적용 시각이 0 초과 12미만이라면 그 쪽으로 보내고 없으면 초기 위치로 보낸다.
         if (0 < gameMgr.time && gameMgr.time < 12) {
             transform.position = new Vector3((float)gameMgr.lastXy[0], (float)gameMgr.lastXy[1], 0f);
@@ -146,13 +106,10 @@ public class Player : MonoBehaviour
             gameMgr.currentField = "Field 1";
         }
 
->>>>>>> BEDev:FrontEnd/Michelin/Assets/Scripts/Field/Player.cs
         fireDir = Vector3.down;
         render = GetComponent<SpriteRenderer>();
         is_hit = false;
         hit_control = 0;
-<<<<<<< HEAD:FrontEnd/Michelin/Assets/Scripts/Player.cs
-=======
 
         // 게임 정보를 받은 다음 설정해 준다.
         // 레벨
@@ -181,7 +138,6 @@ public class Player : MonoBehaviour
         Debug.Log(ridingSpeed);
 
         myInventory = gameMgr.inventoryControl;
->>>>>>> BEDev:FrontEnd/Michelin/Assets/Scripts/Field/Player.cs
     }
 
     // Update is called once per frame
@@ -202,7 +158,7 @@ public class Player : MonoBehaviour
                     transform.eulerAngles = new Vector3(0, 180f, 0);
                     sight = Vector3.right;
                 }
-                else
+                else if (h < 0)
                 {
                     transform.eulerAngles = Vector3.zero;
                     sight = Vector3.left;
@@ -234,9 +190,6 @@ public class Player : MonoBehaviour
                 Debug.Log(collider2Ds.Length);
                 foreach (Collider2D collider2D in collider2Ds) {
                     if (collider2D.CompareTag("Monster")) {
-<<<<<<< HEAD:FrontEnd/Michelin/Assets/Scripts/Player.cs
-                        collider2D.GetComponent<Monster>().Damaged();
-=======
                         HitSound.Play();
                         int damage = UnityEngine.Random.Range(Mathf.CeilToInt(atk*0.8f), Mathf.FloorToInt(atk*1.2f)+1);
                         int gainExp = collider2D.GetComponent<Monster>().Damaged(damage);
@@ -262,7 +215,6 @@ public class Player : MonoBehaviour
                                 expBarSlider.value = 1f * gameMgr.exp / needExp;
                             }
                         }
->>>>>>> BEDev:FrontEnd/Michelin/Assets/Scripts/Field/Player.cs
                         break;
                     }
                 }
@@ -283,16 +235,12 @@ public class Player : MonoBehaviour
                 }
             }
 
-<<<<<<< HEAD:FrontEnd/Michelin/Assets/Scripts/Player.cs
-            // 피격 상태면 240프레임동안 빨간색으로 깜빡, 무적
-=======
             // 피격 상태면 0.4초동안 빨간색으로 깜빡, 무적
->>>>>>> BEDev:FrontEnd/Michelin/Assets/Scripts/Field/Player.cs
             if(is_hit) {
-                if (hit_control < 240)
+                if (hit_control < 0.4f)
                 {
-                    hit_control++;
-                    if ((hit_control/60) % 2 == 0)
+                    hit_control += Time.deltaTime;
+                    if (Mathf.FloorToInt(hit_control/0.1f) % 2 == 0)
                     {
                         render.color = new Color(1, 0, 0, 1);
                     }
@@ -303,7 +251,7 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
-                    hit_control = 0;
+                    hit_control = 0f;
                     is_hit = false;
                     render.color = new Color(1, 1, 1, 1);
                 }
@@ -313,7 +261,29 @@ public class Player : MonoBehaviour
             // triggerItemList의 첫번째에 해당하는 아이템을 얻는다.
             if (Input.GetKeyDown(KeyCode.Space)) {
                 if (triggerItemList.FirstOrDefault() != null) {
-                    triggerItemList.First().gameObject.GetComponent<LivestockProduct>().Get();
+                    GameObject getItem = triggerItemList.First().gameObject;
+                    ItemGetSound.Play();
+                    if(getItem.CompareTag("Livestock Product")) {
+                        // 아이템 획득 로직 작동
+                        myInventory.addItem(triggerItemList.First().gameObject.GetComponent<LivestockProduct>().soItem);
+                        getItem.GetComponent<LivestockProduct>().Get();
+
+                        // 아이템을 획득했음을 보여준다
+                        ShowItemGain(getItem.GetComponent<SpriteRenderer>().sprite, 1, Vector3.zero);
+                    }
+                    else if(getItem.CompareTag("Recipe")) {
+                        /*인벤토리에 레시피 추가*/
+                        myInventory.addItem(triggerItemList.First().gameObject.GetComponent<RecipeDropItem>().soItem);
+                        getItem.GetComponent<RecipeDropItem>().Get();
+                    }
+                    else if(getItem.CompareTag("Plant")) {
+                        // 아이템 획득 로직 작동
+                        myInventory.addItem(triggerItemList.First().gameObject.GetComponent<Plant>().soItem);
+                        getItem.GetComponent<Plant>().Get();
+
+                        // 아이템을 획득했음을 보여준다
+                        ShowItemGain(getItem.GetComponent<SpriteRenderer>().sprite, 1, Vector3.zero);
+                    }
                 }
             }
 
@@ -334,7 +304,20 @@ public class Player : MonoBehaviour
                     // 범위에 속하는 FishingManager을 발견하면 Fishing함수를 실행
                     // 그리고 break로 빠져나간다. (각 FishingManager가 관리하는 공간은 서로 겹치지 않기 때문)
                     if (fishingManager.InBounds(tilePos)) {
-                        fishingManager.Fishing(tilePos);
+                        List<Tuple<SOItem, int>> fishList = fishingManager.Fishing(tilePos);
+
+                        float y = 0;
+                        foreach((SOItem fish, int quantity) in fishList) {
+                            if(quantity > 0) {
+                                for (int i = 0; i < quantity; i++) {
+                                    myInventory.addItem(fish);
+                                }
+
+                                ShowItemGain(fish.icon, quantity, y * Vector3.up);
+                                y += 0.8f;
+                            }
+                        }
+                        ItemGetSound.Play();
                         break;
                     }
                 }
@@ -346,17 +329,13 @@ public class Player : MonoBehaviour
     }
 
     // 플레이어 피격
-    public void Damaged()
+    public void Damaged(int damage)
     {
         if (gameMgr.hp > 0)
         {
             // 피격 모션 & 체력 감소
             if (!is_hit) {
                 is_hit = true;
-<<<<<<< HEAD:FrontEnd/Michelin/Assets/Scripts/Player.cs
-                hp -= 1;
-                Debug.Log("플레이어가 공격을 받았습니다! 체력 : " + hp);
-=======
                 
                 // 데미지 표시
                 GameObject text = Instantiate(damageText, transform.position, Quaternion.identity);
@@ -365,7 +344,6 @@ public class Player : MonoBehaviour
                 gameMgr.hp -= damage;
 
                 healthBarSlider.value = 1f * gameMgr.hp / maxHp;
->>>>>>> BEDev:FrontEnd/Michelin/Assets/Scripts/Field/Player.cs
             }
 
             // 체력이 0 이하가 되면 사망
@@ -382,8 +360,6 @@ public class Player : MonoBehaviour
     {
         animator.SetBool("is_dead", true);
         is_death = true;
-<<<<<<< HEAD:FrontEnd/Michelin/Assets/Scripts/Player.cs
-=======
         Invoke(nameof(ActiveDiePanel), 3f);
     }
 
@@ -437,13 +413,16 @@ public class Player : MonoBehaviour
         gameMgr.hp = maxHp;
 
         Instantiate(levelUp, levelUpPos.position, Quaternion.identity);
->>>>>>> BEDev:FrontEnd/Michelin/Assets/Scripts/Field/Player.cs
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         // 트리거 된 물체가 드롭 아이템 또는 채집품일 때
-        if (other.CompareTag("Livestock Product"))
+        if (
+            other.CompareTag("Livestock Product") 
+            || other.CompareTag("Recipe")
+            || other.CompareTag("Plant")
+        )
         {
             // 트리거 목록에 없으면 추가
             if (!triggerItemList.Contains(other))
@@ -456,7 +435,11 @@ public class Player : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         // 트리거 해제 된 물체가 드롭 아이템일 때
-        if (other.CompareTag("Livestock Product"))
+        if (
+            other.CompareTag("Livestock Product") 
+            || other.CompareTag("Recipe")
+            || other.CompareTag("Plant")
+        )
         {
             // 트리거 목록에 있으면
             if (triggerItemList.Contains(other))

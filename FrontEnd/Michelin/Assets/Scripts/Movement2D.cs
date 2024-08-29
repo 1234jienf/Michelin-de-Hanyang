@@ -15,6 +15,11 @@ public class Movement2D : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    public float GetAnimatorFloat(string name)
+        {
+            return animator.GetFloat(name);
+        }
+
     void Update()
     {
     }

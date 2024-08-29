@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class LivestockProduct : MonoBehaviour
 {
-    [SerializeField]
-    private SOItem soItem;
+    public SOItem soItem;
     
     public void Get() {
         Destroy(gameObject);

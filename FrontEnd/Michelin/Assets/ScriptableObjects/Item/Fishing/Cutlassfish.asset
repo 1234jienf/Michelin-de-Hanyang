@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Cutlassfish
   m_EditorClassIdentifier: 
   prefab: {fileID: 8954473448893897737, guid: 68ff29bd78e30f047a13182b07d0efba, type: 3}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 889aaa98291ccc94eb047b59dbf92894, type: 3}
   itemName: "\uAC08\uCE58"
+  itemCode: ig021
+  itemDescription: 
+  itemCost: 7000

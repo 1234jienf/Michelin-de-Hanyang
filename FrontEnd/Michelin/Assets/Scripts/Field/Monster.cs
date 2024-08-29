@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Tilemaps;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
+using TMPro;
 
 public class Monster : MonoBehaviour
 {
@@ -29,7 +30,20 @@ public class Monster : MonoBehaviour
     private float restTime = 2f; // 쉬는 시간
 
     [SerializeField]
-    private float hp = 10f; // 체력
+    private float maxHp; // 최대 체력
+    private float hp; // 체력
+
+    [SerializeField]
+    private int atk; // 공격력
+
+    public int exp; // 경험치
+
+    [SerializeField]
+    private GameObject healthBar; // 체력 바
+    private Slider healthBarSlider; // 체력바에 사용한 슬라이더
+    private readonly float healthBarLifeTime = 2f; // 체력 바 수명
+    private float latestHealthBarAppeared; // 최근 체력바가 활성화된 시각 
+    private bool isHealthBarActive; // 체력 바 활성화 상태
 
     [SerializeField]
     private SOItemDropTable dropTable; // 드롭 테이블
@@ -58,9 +72,11 @@ public class Monster : MonoBehaviour
         gameMgr = GameMgr.Instance;
         monsterAnim = GetComponent<Animator>();
         spawnManager = GameObject.Find("MonsterSpawnManager").GetComponent<MonsterSpawnManager>();
+        healthBarSlider = healthBar.transform.Find("HealthBarSlider").GetComponent<Slider>();
     }
 
     private void Start() {
+        hp = maxHp;
         isMove = false;
         isTracking = false;
         latestMoveStartTime = Time.time;
@@ -73,18 +89,31 @@ public class Monster : MonoBehaviour
         agent.speed = trackingSpeed;
 
         is_right = true;
+
+        healthBar.SetActive(false);
+        isHealthBarActive = false;
+        latestHealthBarAppeared = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // 이동 방향에 따라 스프라이트 회정 상태 조절
         if (is_right)
         {
             transform.eulerAngles = Vector3.zero;
+            healthBarSlider.transform.eulerAngles = Vector3.zero;
         }
         else
         {
             transform.eulerAngles = new Vector3(0, 180f, 0);
+            healthBarSlider.transform.eulerAngles = Vector3.zero;
+        }
+
+        // 체력 바의 수명이 다했다면 비활성화 시켜준다.
+        if(isHealthBarActive && Time.time - latestHealthBarAppeared >= healthBarLifeTime) {
+            healthBar.SetActive(false);
+            isHealthBarActive = false;
         }
 
         // 피격, 공격, 사망 상태거나 추적 상태면 업데이트 함수를 종료
@@ -164,22 +193,34 @@ public class Monster : MonoBehaviour
     }
     
     // 피격
-    public void Damaged() {
+    public int Damaged(int damage) {
         if (hp > 0) {
             // 피격 모션
             monsterAnim.SetTrigger("Damaged");
 
             // 데미지 표시
             GameObject text = Instantiate(damageText, transform.position, Quaternion.identity);
-            text.GetComponent<DamageText>().damage = 1;
+            text.GetComponent<DamageText>().damage = damage;
             text.transform.position = damagePos.position;
-            hp -= 1;
+            hp -= damage;
+
+            healthBarSlider.value = 1f * hp / maxHp;
+
+            healthBar.SetActive(true);
+            isHealthBarActive = true;
+            latestHealthBarAppeared = Time.time;
 
             // 체력이 0 이하가 되면 사망
             if (hp <= 0) {
+                healthBar.SetActive(false);
+                isHealthBarActive = false;
                 Death();
+
+                return exp;
             }
         }
+
+        return 0;
     }
 
     // 사망
@@ -193,18 +234,11 @@ public class Monster : MonoBehaviour
         spawnManager.monsterCount--; // SpawnManager의 monsterCount 1 감소
     }
 
-    
-    private void OnTriggerEnter2D(Collider2D other) {
-        // 무기에 맞으면 피격
-        if (other.CompareTag("Weapon")) {
-            Damaged();
-        }
-    }
-
     // 추적 시작
     public void StartTracking() {
         isTracking = true;
         isMove = true;
+        latestMoveStartTime = Time.time;
         monsterAnim.SetBool("isWalking", true);
         moveSpeed = trackingSpeed;
     }
@@ -215,6 +249,10 @@ public class Monster : MonoBehaviour
         if (!DoHurtAnim() && !DoAttackAnim() && !DoDeathAnim()) {
             // 목표물을 플레이어로 설정
             agent.SetDestination(playerPos);
+
+            // 이동방향 재 설정
+            moveDir = agent.desiredVelocity.normalized;
+
             // 몬스터의 움직임에 따라 애니메이션 설정
             if (agent.desiredVelocity.x != 0)
             {
@@ -260,7 +298,8 @@ public class Monster : MonoBehaviour
         Debug.Log(collider2Ds.Length);
         foreach (Collider2D collider2D in collider2Ds) {
             if (collider2D.CompareTag("Player")) {
-                collider2D.GetComponent<Player>().Damaged();
+                int damage = UnityEngine.Random.Range(Mathf.CeilToInt(atk*0.8f), Mathf.FloorToInt(atk*1.2f)+1);
+                collider2D.GetComponent<Player>().Damaged(damage);
                 break;
             }
         }

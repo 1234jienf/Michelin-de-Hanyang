@@ -14,11 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5574585448744917892, guid: bf6e5532318a49741abc77f65b8f4c07, type: 3}
   icon: {fileID: -1337657758, guid: 26aa4d2240f4e2a4588f40e62d25adef, type: 3}
-<<<<<<< HEAD
-  itemName: "\uC18C\uAE08"
-=======
   itemName: "\uC124\uD0D5"
   itemCode: ig041
   itemDescription: 
   itemCost: 500
->>>>>>> BEDev

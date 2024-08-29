@@ -1,18 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using TMPro; // TextMeshPro 네임스페이스 추가
+using TMPro;
+using UnityEngine.EventSystems; // 이벤트 처리를 위해 추가
 
-public class BusinessController : MonoBehaviour
+public class BusinessController : MonoBehaviour, IPointerClickHandler // IPointerClickHandler 인터페이스 구현
 {
     public Button businessButton;
-    public TextMeshProUGUI statusText; // Text 대신 TextMeshProUGUI 사용
-    public GameObject messageText; // 영업 시작 메시지를 담고 있는 Text 오브젝트 (TextMeshProUGUI일 수 있음)
+    public TextMeshProUGUI statusText;
+    public GameObject messageText; // 메시지 패널
 
-<<<<<<< HEAD
-    [SerializeField] // Inspector에서 설정할 수 있게 합니다.
-    private CustomerManager customerManager; // CustomerManager 참조 추가
-=======
     [SerializeField]
     private CustomerManager customerManager;
     [SerializeField]
@@ -23,44 +20,48 @@ public class BusinessController : MonoBehaviour
     private RestaurantTimer timer;
     [SerializeField]
     private GameObject timerUI;
->>>>>>> BEDev
 
     private bool isBusinessOpen = false;
+
     void Start()
     {
-        // 버튼 클릭 이벤트에 함수 연결
         businessButton.onClick.AddListener(ToggleBusinessStatus);
+        messageText.AddComponent<EventTrigger>(); // EventTrigger 컴포넌트 동적 추가
     }
 
-    void ToggleBusinessStatus()
+     public void OnPointerClick(PointerEventData eventData)
+    {
+        // 여기서는 패널 클릭 시 아무 동작도 하지 않습니다.
+        Debug.Log("패널이 클릭되었지만 아무 동작도 하지 않습니다.");
+    }
+    public void ToggleBusinessStatus()
 {
     isBusinessOpen = !isBusinessOpen;
 
     if (isBusinessOpen)
     {
         businessButton.GetComponentInChildren<TextMeshProUGUI>().text = "영업 종료";
-        businessButton.transform.localScale = new Vector3(0.8f, 0.8f, 1);
-        StartCoroutine(ShowMessage());
-        customerManager.SetBusinessStatus(true); // NPC 생성 시작
+        StartCoroutine(ShowMessage("영업을 시작합니다"));
+        customerManager.SetBusinessStatus(true);
+        timer.Play();
+        timerUI.SetActive(true);
     }
     else
     {
         businessButton.GetComponentInChildren<TextMeshProUGUI>().text = "영업 시작";
-<<<<<<< HEAD
-        businessButton.transform.localScale = Vector3.one;
-        customerManager.SetBusinessStatus(false); // NPC 생성 중단
-=======
         StartCoroutine(ShowMessage("영업이 종료되었습니다."));
         customerManager.SetBusinessStatus(false);
         timer.ForcedFinish();
         businessResult.AfterBusinessProcess();
->>>>>>> BEDev
     }
 }
-    IEnumerator ShowMessage()
+
+    IEnumerator ShowMessage(string message)
     {
-        messageText.SetActive(true); // 메시지 표시
-        yield return new WaitForSeconds(1); // 2초간 대기
-        messageText.SetActive(false); // 메시지 숨김
+        TextMeshProUGUI textComponent = messageText.GetComponentInChildren<TextMeshProUGUI>();
+        textComponent.text = message; // 메시지 설정
+        messageText.SetActive(true);
+        yield return new WaitForSeconds(2); // 메시지를 2초간 표시
+        messageText.SetActive(false);
     }
 }

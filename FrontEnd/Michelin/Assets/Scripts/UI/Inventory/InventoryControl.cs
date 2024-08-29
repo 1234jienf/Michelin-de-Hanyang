@@ -43,6 +43,8 @@ public class InventoryControl : MonoBehaviour
     public GameObject[] SlotsParent;
     private List<ItemSlot[]> slots;
 
+    // draggableUI ´ã±â¿ë
+    public draggableUI draggable;
 
     // Load Json(Inventory Content)
     public List<ItemSlot[]> GetSlots() { return slots; }
@@ -202,9 +204,10 @@ public class InventoryControl : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Hunting Ground")
         {
             if (Input.GetKeyDown(KeyCode.I))
-            {
+            {   
                 inventroy_show = !inventroy_show;
             }
+            
             Inventory.SetActive(inventroy_show);
         }
         else

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: -2791149248461184015}
   - component: {fileID: 6711239340263418478}
   - component: {fileID: 2390092705048650466}
-  - component: {fileID: -7644409665842031907}
   m_Layer: 0
   m_Name: Balloon Flower
   m_TagString: Plant
@@ -100,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2430eb6b5d4588f49aff74a56345d769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soItem: {fileID: 11400000, guid: 65aabd8c0af619e419da67790e771d5c, type: 2}
   spawnPointId: 0
 --- !u!50 &6711239340263418478
 Rigidbody2D:
@@ -163,16 +163,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.6
---- !u!114 &-7644409665842031907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1232429163758089895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fec9c0f9c037d148b5a0c4a874cf969, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soItem: {fileID: 0}

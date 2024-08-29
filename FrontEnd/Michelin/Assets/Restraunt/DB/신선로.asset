@@ -15,10 +15,48 @@ MonoBehaviour:
   Level: 0
   Food: {fileID: 21300000, guid: 0d2984f27ae8e8348a5bfed7ece6c572, type: 3}
   Name: "\uC2E0\uC120\uB85C"
-  Ingredient: "\uC18C\uACE0\uAE30,\uC0DD\uC120(\uACE0\uB4F1\uC5B4, \uBCD1\uC5B4,
-    \uAC08\uCE58 \uC911 \uD0DD1),\uAD74,\uBC84\uC12F,\uB2F9\uBA74, \uACE0\uC0AC\uB9AC,
-    \uD30C, \uB9C8\uB298, \uC7A3, \uAC04\uC7A5, \uBC00\uAC00\uB8E8, \uB2F9\uADFC,
-    \uB300\uCD94, \uC560\uD638\uBC15"
+  Ingredient: "\uC18C\uACE0\uAE30, \uBCD1\uC5B4, \uAD74,\uBC84\uC12F,\uB2F9\uBA74,
+    \uACE0\uC0AC\uB9AC, \uD30C, \uB9C8\uB298, \uC7A3, \uAC04\uC7A5, \uBC00\uAC00\uB8E8,
+    \uB2F9\uADFC, \uB300\uCD94, \uC560\uD638\uBC15"
+  recipe: {fileID: 11400000, guid: e6968574e7326024faefe669c9b72c50, type: 2}
+  recipeDetail:
+  - ig_code: {fileID: 11400000, guid: 925a171a1f367334dbbd51bcd204da51, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: a9c505ae36043574f93eeeb3121bca95, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: adaa448f6608e4946ad6c273424511b2, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: a38caef7823b07d44a15b23cd5e90826, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: fa8c71b0148605e438afab2a61ddf3a1, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: a2250f58d0c185542af64069c304369b, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: 6c5e3f61d970b074e97e914c4e0504fc, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: ab4ee010220fc3a4f84fee04dfec76bc, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: f76068ca7a650d64bb1b7d8348d64f93, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: 55bac50e7ff0e784bb80873d80858385, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: b760846d35008fb409d04afe9fd1e46e, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: 689448213b5faa9448040c22f3422647, type: 2}
+    amount: 1
+  ig_list:
+  - {fileID: 11400000, guid: 925a171a1f367334dbbd51bcd204da51, type: 2}
+  - {fileID: 11400000, guid: a9c505ae36043574f93eeeb3121bca95, type: 2}
+  - {fileID: 11400000, guid: adaa448f6608e4946ad6c273424511b2, type: 2}
+  - {fileID: 11400000, guid: a38caef7823b07d44a15b23cd5e90826, type: 2}
+  - {fileID: 11400000, guid: fa8c71b0148605e438afab2a61ddf3a1, type: 2}
+  - {fileID: 11400000, guid: a2250f58d0c185542af64069c304369b, type: 2}
+  - {fileID: 11400000, guid: 6c5e3f61d970b074e97e914c4e0504fc, type: 2}
+  - {fileID: 11400000, guid: ab4ee010220fc3a4f84fee04dfec76bc, type: 2}
+  - {fileID: 11400000, guid: f76068ca7a650d64bb1b7d8348d64f93, type: 2}
+  - {fileID: 11400000, guid: 55bac50e7ff0e784bb80873d80858385, type: 2}
+  - {fileID: 11400000, guid: b760846d35008fb409d04afe9fd1e46e, type: 2}
+  - {fileID: 11400000, guid: 689448213b5faa9448040c22f3422647, type: 2}
   Process1: "\uC18C\uACE0\uAE30 \uC790\uB974\uAE30 "
   Process2: "\uBC84\uC12F, \uACC4\uB780, \uB2F9\uADFC, \uD30C, \uB300\uCD94 \uC790\uB974\uAE30 "
   Process3: "\uC560\uD638\uBC15\uC744 \uB3D9\uADF8\uB797\uAC8C \uB9CC\uB4E0\uD6C4

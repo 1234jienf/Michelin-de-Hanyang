@@ -16,6 +16,36 @@ MonoBehaviour:
   Food: {fileID: 21300000, guid: 636167daa1fabfd49819eb4eb2e06171, type: 3}
   Name: "\uAD81\uC911\uB5A1\uBCF6\uC774"
   Ingredient: "\uB5A1,\uC18C\uACE0\uAE30,\uC591\uD30C,\uB2F9\uADFC,\uBC84\uC12F,\uD30C,\uAC04\uC7A5,\uC124\uD0D5,\uB9C8\uB298"
+  recipe: {fileID: 11400000, guid: 733eea18551415a4e85b8c7a55c3f3c4, type: 2}
+  recipeDetail:
+  - ig_code: {fileID: 11400000, guid: afb9badccf109334cb60683f5c0413e6, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: 925a171a1f367334dbbd51bcd204da51, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: af80600b45aab6a479c1f572a018196d, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: 55bac50e7ff0e784bb80873d80858385, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: 46065b4fba2839843b34590e317dac80, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: fa8c71b0148605e438afab2a61ddf3a1, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: ab4ee010220fc3a4f84fee04dfec76bc, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: ff0c189f148c3434abb13f1684847877, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: a2250f58d0c185542af64069c304369b, type: 2}
+    amount: 1
+  ig_list:
+  - {fileID: 11400000, guid: afb9badccf109334cb60683f5c0413e6, type: 2}
+  - {fileID: 11400000, guid: 925a171a1f367334dbbd51bcd204da51, type: 2}
+  - {fileID: 11400000, guid: af80600b45aab6a479c1f572a018196d, type: 2}
+  - {fileID: 11400000, guid: 55bac50e7ff0e784bb80873d80858385, type: 2}
+  - {fileID: 11400000, guid: 46065b4fba2839843b34590e317dac80, type: 2}
+  - {fileID: 11400000, guid: fa8c71b0148605e438afab2a61ddf3a1, type: 2}
+  - {fileID: 11400000, guid: ab4ee010220fc3a4f84fee04dfec76bc, type: 2}
+  - {fileID: 11400000, guid: ff0c189f148c3434abb13f1684847877, type: 2}
+  - {fileID: 11400000, guid: a2250f58d0c185542af64069c304369b, type: 2}
   Process1: "\uC18C\uACE0\uAE30, \uB5A1 \uC790\uB974\uAE30 "
   Process2: "\uC18C\uACE0\uAE30\uC5D0 \uAC04\uC7A5, \uC124\uD0D5, \uB9C8\uB298 \uB123\uACE0
     \uC7AC\uC6B0\uAE30 "

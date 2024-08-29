@@ -1,13 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data;
-using System.Numerics;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.Tilemaps;
 
 public class FishingManager : MonoBehaviour
@@ -20,6 +13,11 @@ public class FishingManager : MonoBehaviour
 
     [SerializeField]
     private float[] cooldown; // 쿨타임
+
+    [SerializeField]
+    private GameObject[] fishes; // 호수 안 물고기 들
+
+    private bool[] canFishing; // 낚시 가능 여부
 
     private float[] latestFishing; // 최근 낚시 시각
 
@@ -72,26 +70,25 @@ public class FishingManager : MonoBehaviour
             }
         }
 
-<<<<<<< HEAD:FrontEnd/Michelin/Assets/Scripts/FishingManager.cs
-        string s = "";
-        for (int y = lakeArray.GetLength(1) - 1; y >= 0 ; y--) {
-            for (int x = 0; x < lakeArray.GetLength(0); x++) {
-                s += Convert.ToString(lakeArray[x, y]);
-                s += " ";
-            }
-            s += "\n";
-        }
-        Debug.Log(s);
-
-        // 최근 낚시 시각 초기화
-=======
         canFishing = new bool[lakeNum];
 
         // 최근 낚시 시각 초기화 및 낚시 가능 상태 초기화
->>>>>>> BEDev:FrontEnd/Michelin/Assets/Scripts/Field/FishingManager.cs
         latestFishing = new float[lakeNum];
         for(int i = 0; i < lakeNum; i++) {
             latestFishing[i] = Time.time;
+            canFishing[i] = false;
+            fishes[i].SetActive(false);
+        }
+    }
+    
+    void Update() {
+        for (int i = 0; i < lakeNum; i++) {
+            // 쿨타임이 지났는데 낚시가 불가능한 상태로 되어 있으면
+            if (Time.time - latestFishing[i] >= cooldown[i] && !canFishing[i]) {
+                // 상태를 바꿔준다.
+                canFishing[i] = true;
+                fishes[i].SetActive(true);
+            }
         }
     }
 
@@ -102,25 +99,28 @@ public class FishingManager : MonoBehaviour
     }
 
     // 낚시 시도
-    public void Fishing(Vector3Int tilePos) {
+    public List<Tuple<SOItem, int>> Fishing(Vector3Int tilePos) {
         int lakeId = lakeArray[tilePos.x - offset.x, tilePos.y - offset.y];
+        List<Tuple<SOItem, int>> emptyList = new List<Tuple<SOItem, int>>();
 
         if (lakeId > dropTable.Length || lakeId > cooldown.Length) {
             Debug.Log("드롭테이블 또는 쿨타임을 설정해 주세요!!!!");
-            return;
+            return emptyList;
         }
 
         // 쿨타임이 지났으면 아이템을 얻는다.
-        if (Time.time - latestFishing[lakeId - 1] >= cooldown[lakeId - 1]) {
-            List<SOItem> itemList = dropTable[lakeId - 1].CreateItemList();
-            foreach(SOItem item in itemList) {
-                Debug.Log(item.itemName);
-            }
+        if (canFishing[lakeId - 1]) {
+            List<Tuple<SOItem, int>> itemList = dropTable[lakeId - 1].CreateItemList();
             latestFishing[lakeId - 1] = Time.time;
+            canFishing[lakeId - 1] = false;
+            fishes[lakeId - 1].SetActive(false);
+
+            return itemList;
         }
         // 아니라면 아직 시간이 안됐다는 메시지 출력
         else {
             Debug.Log("Lake" + lakeId + " 쿨타임이 " + (cooldown[lakeId - 1] - Time.time + latestFishing[lakeId - 1]) + "초 남았습니다.");
+            return emptyList;
         }
     }
 }

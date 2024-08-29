@@ -15,3 +15,6 @@ MonoBehaviour:
   prefab: {fileID: 7181216898736036331, guid: f628e8661a8b0b34b95b48b12f744db6, type: 3}
   icon: {fileID: 2030816832, guid: 35db49e2d93df41448d404db46bd51f1, type: 3}
   itemName: "\uC624\uC9D5\uC5B4"
+  itemCode: ig026
+  itemDescription: 
+  itemCost: 5000

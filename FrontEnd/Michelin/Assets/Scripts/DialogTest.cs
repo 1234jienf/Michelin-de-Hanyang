@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DialogTest : MonoBehaviour
 {
@@ -75,6 +76,9 @@ public class DialogTest : MonoBehaviour
 		yield return new WaitForSeconds(2f);
 
 		yield return new WaitUntil(()=>Dialog6.UpdateDialog());
+
+		yield return new WaitForSeconds(2f);
+		SceneManager.LoadScene("Main");
 	}
 }
 

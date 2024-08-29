@@ -15,3 +15,6 @@ MonoBehaviour:
   prefab: {fileID: 8582815776042468618, guid: 55e6d2d87673289468a2311377626bcd, type: 3}
   icon: {fileID: -1215136476, guid: 26aa4d2240f4e2a4588f40e62d25adef, type: 3}
   itemName: "\uCC39\uC300"
+  itemCode: ig040
+  itemDescription: 
+  itemCost: 500

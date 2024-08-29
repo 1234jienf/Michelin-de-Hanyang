@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; // Image 사용을 위해 추가
 using TMPro;
+using Unity.VisualScripting;
 
 public class LearnRecipeManager : MonoBehaviour
 {
@@ -11,12 +12,9 @@ public class LearnRecipeManager : MonoBehaviour
     public TextMeshProUGUI ingredientText; // 레시피 재료를 표시할 필드
     public TextMeshProUGUI messageText; // 요리를 배울지 묻는 메시지를 표시할 필드
     public Image foodImage; // 음식 이미지를 표시할 필드
-<<<<<<< HEAD
-=======
     public Recipe _recipe;
     public RPListControl listControl;
     public MaxMenuCountControl ForInfo;
->>>>>>> BEDev
 
     void Awake()
     {
@@ -39,6 +37,7 @@ public class LearnRecipeManager : MonoBehaviour
     {
         if (recipe != null)
         {
+            _recipe = recipe;
             string levelTextValue = "";
             switch (recipe.Level)
             {
@@ -58,8 +57,6 @@ public class LearnRecipeManager : MonoBehaviour
             foodImage.sprite = recipe.Food; // 이미지 설정
         }
     }
-<<<<<<< HEAD
-=======
 
     public void learnRecipe()
     {
@@ -96,5 +93,4 @@ public class LearnRecipeManager : MonoBehaviour
         }
         listControl.addRecipe(_recipe);
     }
->>>>>>> BEDev
 }

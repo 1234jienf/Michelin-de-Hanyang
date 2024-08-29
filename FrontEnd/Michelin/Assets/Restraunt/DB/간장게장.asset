@@ -16,6 +16,21 @@ MonoBehaviour:
   Food: {fileID: 21300000, guid: b888fbeeffd20a541a6d991a9b3cf075, type: 3}
   Name: "\uAC04\uC7A5\uAC8C\uC7A5"
   Ingredient: "\uAF43\uAC8C,\uAC04\uC7A5,\uACE0\uCD94,\uB9C8\uB298"
+  recipe: {fileID: 11400000, guid: 96caaa0d9bf1c694b83f44abc697bb35, type: 2}
+  recipeDetail:
+  - ig_code: {fileID: 11400000, guid: e8a30245c70e7f044abffaa7d3ebfde6, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: ab4ee010220fc3a4f84fee04dfec76bc, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: b922d4e9e2ec58f4f8a892e3c305d055, type: 2}
+    amount: 1
+  - ig_code: {fileID: 11400000, guid: a2250f58d0c185542af64069c304369b, type: 2}
+    amount: 1
+  ig_list:
+  - {fileID: 11400000, guid: e8a30245c70e7f044abffaa7d3ebfde6, type: 2}
+  - {fileID: 11400000, guid: ab4ee010220fc3a4f84fee04dfec76bc, type: 2}
+  - {fileID: 11400000, guid: b922d4e9e2ec58f4f8a892e3c305d055, type: 2}
+  - {fileID: 11400000, guid: a2250f58d0c185542af64069c304369b, type: 2}
   Process1: "\uAC8C \uB2E6\uC544\uB0B4\uAE30 "
   Process2: "\uBB3C\uC5D0 \uAC04\uC7A5, \uACE0\uCD94, \uB9C8\uB298 \uB123\uACE0 \uB053\uC774\uAE30 "
   Process3: "\uAC04\uC7A5\uC5D0 \uAC8C \uB2F4\uAE30 "

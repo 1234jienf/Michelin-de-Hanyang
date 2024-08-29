@@ -38,4 +38,9 @@ public class PlantSpawnPoint : MonoBehaviour
         latestGatheringTime = Time.time;
         isSpawn = false;
     }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 1.5f);
+    }
 }

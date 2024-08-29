@@ -15,3 +15,6 @@ MonoBehaviour:
   prefab: {fileID: 2432108724483174305, guid: 92da93f8fdd32994f8b8b7054910981e, type: 3}
   icon: {fileID: 847856763, guid: 26aa4d2240f4e2a4588f40e62d25adef, type: 3}
   itemName: "\uB450\uBD80"
+  itemCode: ig042
+  itemDescription: 
+  itemCost: 500

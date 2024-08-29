@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2430eb6b5d4588f49aff74a56345d769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soItem: {fileID: 11400000, guid: a2250f58d0c185542af64069c304369b, type: 2}
   spawnPointId: 0
 --- !u!50 &5906170865905873698
 Rigidbody2D:

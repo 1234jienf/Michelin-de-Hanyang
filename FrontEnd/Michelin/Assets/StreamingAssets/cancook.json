@@ -1,0 +1,21 @@
+{
+    "cook":[
+        {
+            "Name": "야채죽",
+            "Ingredient": {
+                "쌀": 1,
+                "물": 1
+            },
+            "Img":"./Assets/foods/야채죽.png"
+        },
+        {
+            "Name": "호박죽",
+            "Ingredient": {
+                "쌀": 1,
+                "물": 1,
+                "늙은 호박": 1
+            },
+            "Img":"./Assets/foods/야채죽.png"
+        }
+    ]   
+}

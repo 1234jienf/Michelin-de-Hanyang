@@ -1,50 +1,29 @@
-using System.Collections;
-<<<<<<< HEAD
-using System.Collections.Generic;
+using System.Collections.Generic; // For using List
 using UnityEngine;
-=======
+using System.Collections;
 using System.IO;
 using UnityEngine.UI;
 using TMPro;
->>>>>>> BEDev
 
 [System.Serializable]
 public class MenuItem {
     public string name;
     public int requiredAmount;
     public int currentAmount;
-<<<<<<< HEAD
-=======
     public string itemCode;
     public int MenuCost;
     public Sprite image;
 
     public Dictionary<Ingredient, int> NeedIngredient;
->>>>>>> BEDev
 }
 
 [System.Serializable]
 public class Ingredient {
-    public string name;
+    public string itemcode;
     public int amount;
 }
 
 public class MenuManager : MonoBehaviour {
-<<<<<<< HEAD
-    public List<MenuItem> menuItems;
-    public List<Ingredient> ingredients;
-
-    public void IncreaseMenuItem(string menuItemName) {
-        var menuItem = menuItems.Find(item => item.name == menuItemName);
-        if (menuItem != null && CanIncrease(menuItem)) {
-            menuItem.currentAmount++;
-            UpdateIngredients(menuItem);
-        }
-    }
-
-    private bool CanIncrease(MenuItem menuItem) {
-        // 재료 체크 로직
-=======
 
     public List<MenuItem> todaysMenu; // List is part of System.Collections.Generic
     public List<MenuItem> menuItems;
@@ -122,20 +101,11 @@ public class MenuManager : MonoBehaviour {
                 return false;
             }
         }
->>>>>>> BEDev
         return true;
     }
 
-    private void UpdateIngredients(MenuItem menuItem) {
+    public void UpdateIngredientsInc(ref MenuItem menuItem) {
         // 재료 업데이트 로직
-<<<<<<< HEAD
-    }
-
-    public void SaveMenu() {
-        // 메뉴 저장 로직
-    }
-}
-=======
         foreach (KeyValuePair<Ingredient, int> ingredient in menuItem.NeedIngredient) {
                 for (int i = 0; i < ingredients.Count; ++i) {
                     if (ingredients[i].itemcode == ingredient.Key.itemcode) {
@@ -291,4 +261,3 @@ public class MenuManager : MonoBehaviour {
         LoadData();
     }
 }
->>>>>>> BEDev

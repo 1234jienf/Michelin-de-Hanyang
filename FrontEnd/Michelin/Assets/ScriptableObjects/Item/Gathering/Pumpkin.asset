@@ -15,3 +15,6 @@ MonoBehaviour:
   prefab: {fileID: 6550724130770925969, guid: da5c34b7723574e4b86655ceaa04544c, type: 3}
   icon: {fileID: -180712757, guid: 26aa4d2240f4e2a4588f40e62d25adef, type: 3}
   itemName: "\uB299\uC740 \uD638\uBC15"
+  itemCode: ig017
+  itemDescription: 
+  itemCost: 200

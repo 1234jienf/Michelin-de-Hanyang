@@ -41,9 +41,6 @@ public class MainCamera : MonoBehaviour
 
         // 카메라의 너비와 높이 계산 (World Point 단위)
         (cameraWidth, cameraHeight) = CalcCameraSize();
-
-        // Scene이 이동해도 파괴되지 않도록 설정
-        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame

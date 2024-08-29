@@ -25,37 +25,9 @@ public class RecipeUIManager : MonoBehaviour
     {
         LearnRecipeManager.Instance.ShowRecipeDetails(recipe);
     }
-<<<<<<< HEAD
-=======
     
->>>>>>> BEDev
     void Start()
-{
-    if (recipe == null)
     {
-<<<<<<< HEAD
-        Debug.LogError("Recipe is not assigned in RecipeUIManager.");
-        return;
-    }
-
-    nameText.text = recipe.Name ?? ""; // recipe.Name이 null이면 빈 문자열을 할당
-    ingredientText.text = recipe.Ingredient ?? ""; // recipe.Ingredient가 null이면 빈 문자열을 할당
-
-    foodImage.sprite = recipe.Food; // recipe.Food가 null이더라도 예외가 발생하지 않습니다.
-
-    SetProcessText(process1Text, recipe.Process1);
-    SetProcessText(process2Text, recipe.Process2);
-    SetProcessText(process3Text, recipe.Process3);
-    SetProcessText(process4Text, recipe.Process4);
-    SetProcessText(process5Text, recipe.Process5);
-    SetProcessText(process6Text, recipe.Process6);
-    SetProcessText(process7Text, recipe.Process7);
-}
-
-private void SetProcessText(TextMeshProUGUI textComponent, string value)
-{
-    if (textComponent != null)
-=======
         AlreadyLearned = false;
         ForInfo = FindObjectOfType<MaxMenuCountControl>();
         
@@ -112,13 +84,12 @@ private void SetProcessText(TextMeshProUGUI textComponent, string value)
     }
     
     private void SetProcessText(TextMeshProUGUI textComponent, string value)
->>>>>>> BEDev
     {
+        if (textComponent != null)
+        {
         textComponent.text = value ?? "";
+        }
     }
-<<<<<<< HEAD
-}}
-=======
 
     public void setRecipe(Recipe r)
     {
@@ -138,4 +109,3 @@ private void SetProcessText(TextMeshProUGUI textComponent, string value)
     }
 
 }
->>>>>>> BEDev

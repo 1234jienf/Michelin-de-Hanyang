@@ -3,28 +3,24 @@
     {
     "itemName": "낡은칼",
     "itemPrice":100,
-    "itemDescription":"낡은칼이다",
-    "isPurchased": false
+    "itemDescription":"낡은칼이다"
     },
     {
     "itemName": "단단한칼",
     "itemPrice":500,
-    "itemDescription":"단단하고 묵직한 칼이다",
-    "isPurchased": false
+    "itemDescription":"단단하고 묵직한 칼이다"
     }
     ],
     "vehicle": [
     {
     "itemName": "비실비실한 조랑말",
     "itemPrice":100,
-    "itemDescription":"곧 죽을것같다",
-    "isPurchased": false
+    "itemDescription":"곧 죽을것같다"
     },
     {
     "itemName": "튼튼한 말",
     "itemPrice":500,
-    "itemDescription":"건강을 되찾은 건강한 말이다.",
-    "isPurchased": false
+    "itemDescription":"건강을 되찾은 건강한 말이다."
     }
     ]
 }

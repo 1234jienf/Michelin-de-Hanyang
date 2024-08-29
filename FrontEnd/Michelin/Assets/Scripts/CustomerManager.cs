@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI; 
 using SuperTiled2Unity;
+using TMPro;
 
 [System.Serializable]
 public class CustomerMove {
@@ -16,7 +17,11 @@ public class CustomerMove {
 
 public class CustomerManager : MonoBehaviour {
     [SerializeField]
-    private GameObject npcPrefab; // NPC 프리팹
+    private GameObject npcPrefabMale; // 남성 NPC 프리팹
+    [SerializeField]
+    private GameObject npcPrefabFemale; // 여성 NPC 프리팹
+    [SerializeField]
+    public GameObject foodImageUI; // UI에 표시할 Image 컴포넌트
     [SerializeField]
     // private float moveSpeed = 10f; // 이동 속도
     private Animator animator; // 애니메이터 컴포넌트
@@ -25,7 +30,8 @@ public class CustomerManager : MonoBehaviour {
     private Vector2 moveDirection = Vector2.zero; // 이동 방향
     private int num = 0;
     public CustomerMove customer;
-    // [SerializeField] Transform target;
+    private Vector3 spawnPoint; // NPC의 스폰 위치를 저장할 변수
+
     private NavMeshAgent agent;
      [SerializeField]
     private List<Transform> targets; // 모든 타겟들을 저장하는 리스트
@@ -64,17 +70,6 @@ public class CustomerManager : MonoBehaviour {
             targetsActive.Add(target.gameObject.activeSelf);
         }
     }
-<<<<<<< HEAD
-     IEnumerator SpawnCustomerRoutine() {
-        while (true) {
-            yield return new WaitForSeconds(5); // 4초 간격으로 NPC 스폰
-            if (IsAnyTargetActive() && num < 13) {
-                num ++;
-                Debug.Log(num);
-                SpawnCustomerAtSpawnPoint();
-            } else {
-                Debug.Log("모든 타겟이 비활성화되어 NPC를 더 이상 스폰하지 않습니다.");
-=======
     IEnumerator SpawnCustomerRoutine()
     {
         while (true)
@@ -89,32 +84,25 @@ public class CustomerManager : MonoBehaviour {
             else
             {
                 // // Debug.Log("모든 타겟이 비활성화되어 NPC를 더 이상 스폰하지 않습니다.");
->>>>>>> BEDev
                 yield break; // 모든 타겟이 비활성화되면 코루틴 종료
             }
         }
         yield break;
     }
+
     bool IsAnyTargetActive() {
         return targetsActive.Contains(true);
     }
-    void SpawnCustomerAtSpawnPoint() {
+    void SpawnRandomCustomerAtSpawnPoint()
+    {
         SuperObject[] superObjects = FindObjectsOfType<SuperObject>();
 
-        foreach (var obj in superObjects) {
-            if (obj.name == "Object_44") {
+        foreach (var obj in superObjects)
+        {
+            if (obj.name == "Object_44")
+            {
                 var customProperties = obj.GetComponent<SuperCustomProperties>();
 
-<<<<<<< HEAD
-                if (customProperties != null ) {
-                    Debug.Log("Spawning NPC at: " + obj.name);
-                    GameObject npc = Instantiate(npcPrefab, obj.transform.position, Quaternion.identity);
-                    var customerScript = npc.GetComponent<CustomerManager>();
-                    if (customerScript != null) {
-                    customerScript.InitializeAgent();  // NavMeshAgent 초기화
-                }
-                break;
-=======
                 if (customProperties != null)
                 {
                     // Debug.Log("Spawning NPC at: " + obj.name);
@@ -130,11 +118,11 @@ public class CustomerManager : MonoBehaviour {
                         customerScript.InitializeAgent();  // NavMeshAgent 초기화
                     }
                     break;
->>>>>>> BEDev
                 }
             }
         }
     }
+
     public void InitializeAgent() {
         agent = GetComponent<NavMeshAgent>();
         if (agent != null) {
@@ -146,17 +134,10 @@ public class CustomerManager : MonoBehaviour {
         }
     
     }
-//     public void MoveToSitArea()
-//     {
+     void OnEnable() {
+        FoodArriveEvent.OnFoodDelivered += HandleFoodDelivery;
+    }
 
-<<<<<<< HEAD
-//     // agent.SetDestination(target.position);
-//     if (agent == null)
-//     {
-//         Debug.LogError("NavMeshAgent component is not found.");
-//         return;
-//     }
-=======
     void OnDisable() {
         FoodArriveEvent.OnFoodDelivered -= HandleFoodDelivery;
     }
@@ -237,23 +218,10 @@ private IEnumerator MoveToSpawnAndDestroy() {
         // Debug.LogError("NavMeshAgent component is not found.");
     }
 }
->>>>>>> BEDev
 
-//     SuperObject[] sitAreas = FindObjectsOfType<SuperObject>();
-//     foreach (var area in sitAreas)
-//     {
-//         var properties = area.GetComponent<SuperCustomProperties>();
-//         if (properties != null)
-//         {
-//             Debug.Log("Moving NPC to area: " + area.transform.position);
-//             agent.SetDestination(area.transform.position);
-//             break;
-//         }
-//     }
-// }
     public void MoveToSitArea() {
 
-    targetsActive = new List<bool>();  // 이 줄을 추가하여 리스트를 초기화합니다.
+    targetsActive = new List<bool>();
         foreach (var target in targets) {
             targetsActive.Add(target.gameObject.activeSelf);
         }
@@ -308,13 +276,8 @@ private int FindNextActiveTargetIndex() {
 
     // 타겟에 도착했는지 확인하는 코루틴
     IEnumerator CheckIfArrived(int targetIndex, Vector3 targetPosition) {
-        while (true) {
-            yield return new WaitForSeconds(0.5f); // 주기적으로 체크
+    const float thresholdDistance = 1.0f; // 타겟에 도달했다고 간주할 최소 거리
 
-<<<<<<< HEAD
-            // 타겟에 충분히 가까워졌는지 확인
-                    // 타겟에 도착했다고 간주, OnTargetReached 호출
-=======
     while (true) {
         // 타겟과의 현재 거리 계산
         float distance = Vector3.Distance(agent.transform.position, targetPosition);
@@ -322,24 +285,20 @@ private int FindNextActiveTargetIndex() {
         // 거리가 임계값 이하인지 확인
         if (distance <= thresholdDistance) {
             // // Debug.Log("Target reached: " + targetIndex);
->>>>>>> BEDev
             OnTargetReached(targetIndex);
-            Debug.Log("OnTargetReached호출");
-            break;
+            break; // 타겟에 도달했으므로 반복 중지
         }
+
+        // 아직 타겟에 도달하지 않았다면, 잠시 후 다시 확인
+        yield return new WaitForSeconds(0.5f);
     }
+}
 void OnTargetReached(int targetIndex) {
     targetsActive[targetIndex] = false; // 해당 타겟을 비활성화 상태로 변경
     targets[targetIndex].gameObject.SetActive(false); // 타겟 게임 오브젝트를 비활성화
-<<<<<<< HEAD
-     if (!IsAnyTargetActive()) {
-        Debug.Log("모든 타겟을 방문했습니다.");
-        // 여기서 필요하다면 NPC 생성을 멈출 수 있습니다.
-=======
     ShowFoodImage(targetIndex);
     if (!IsAnyTargetActive()) {
         // Debug.Log("모든 타겟을 방문했습니다.");
->>>>>>> BEDev
     } else {
     }
     StartCoroutine(WaitAndChangeImageOrLeave(targetIndex, this.gameObject));
@@ -371,9 +330,6 @@ private IEnumerator WaitAndChangeImageOrLeave(int targetIndex, GameObject custom
 void ShowFoodImage(int targetIndex) {
         MenuManager menuManager = FindObjectOfType<MenuManager>(); // 메뉴 매니저 인스턴스를 찾습니다.
 
-<<<<<<< HEAD
-}
-=======
         if (menuManager != null) {
             MenuItem randomFood = menuManager.GetRandomFoodItem(); // 랜덤 음식 아이템을 가져옵니다.
             if (randomFood != null && randomFood.image != null && foodImageUI != null) {
@@ -390,7 +346,6 @@ void ShowFoodImage(int targetIndex) {
             }
         }
     }
->>>>>>> BEDev
     void Update()
     {
         // NavMeshAgent의 이동 상태에 따라 애니메이션을 업데이트

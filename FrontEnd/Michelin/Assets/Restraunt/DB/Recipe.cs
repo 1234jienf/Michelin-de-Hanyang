@@ -1,14 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Recipe", menuName = "recipe")]
+
+[Serializable]
+public class RecipeDetail {
+    public SOItem ig_code;
+    public int amount;
+}
+
 public class Recipe : ScriptableObject
 {
     public int Level;
     public Sprite Food;
     public string Name;
     public string Ingredient;
+    public SOItem recipe;
+    public List<RecipeDetail> recipeDetail;
+    public List<SOItem> ig_list;
     public string Process1;
     public string Process2;
     public string Process3;
